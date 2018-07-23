@@ -1,0 +1,110 @@
+package com.kimschool.main.Dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.kimschool.main.vo.BoardInfoVo;
+import com.kimschool.main.vo.ImageVo;
+
+/**
+ *
+ * KSC1010のDaoクラス
+ * @author yun
+ *
+ */
+@Repository
+public class KSC1010Dao {
+
+	private Connection getConnection() throws SQLException {
+		Connection conn = null;
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kimschool_mm", "kimschool", "kimschool1");
+		}
+		catch (ClassNotFoundException e) {
+			System.out.println("Driver loading failed");
+		}
+		return conn;
+	}
+
+	/**
+	 *
+	 * @return メイン表示用お知らせ情報リスト
+	 */
+	public List<BoardInfoVo> getOshiraseList(){
+
+		List<BoardInfoVo> boardList = new ArrayList<BoardInfoVo>();
+		Connection conn = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+
+	    try {
+	    	conn = getConnection();
+	    	String sql = "SELECT IDX, TITLE, REG_DATE" +
+		             " FROM BOARD_INFO" +
+		             " WHERE MAIN_FLAG = 1"+
+		             " ORDER BY REG_DATE ASC";
+
+	    	pstmt = conn.prepareStatement(sql);
+		      rs = pstmt.executeQuery();
+
+		      while(rs.next()) {
+		    	  BoardInfoVo vo = new BoardInfoVo();
+
+		    	  vo.setIdx(rs.getInt(1));
+		    	  vo.setTitle(rs.getString(2));
+
+		    	  boardList.add(vo);
+		      }
+	    }catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return boardList;
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public List<ImageVo> getImageList(){
+
+		List<ImageVo> imageList = new ArrayList<ImageVo>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = getConnection();
+			String sql = "SELECT IDX, NAME, PATH, SHOW_FLAG" +
+					" FROM IMAGE_INFO" +
+					" WHERE SHOW_FLAG = 1" +
+					"ORDER BY IDX ASC";
+
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				ImageVo vo = new ImageVo();
+				vo.setIdx(rs.getInt(1));
+				vo.setName(rs.getString(2));
+				vo.setPath(rs.getString(3));
+				vo.setShowFlag(rs.getString(4));
+
+				imageList.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return imageList;
+	}
+}

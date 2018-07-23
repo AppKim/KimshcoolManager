@@ -1,0 +1,51 @@
+package com.kimschool.login.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.kimschool.login.dao.LoginDAO;
+import com.kimschool.login.service.LoginService;
+import com.kimschool.login.vo.UserInfoVo;
+
+@Repository
+public class LoginServiceImpl implements LoginService {
+
+	@Autowired
+	private LoginDAO loginDao;
+
+	public UserInfoVo getUser(String userId, String password) {
+		UserInfoVo userInfoVo = loginDao.getUser( userId, password );
+
+		return userInfoVo;
+	}
+
+	@Override
+	public List<String> searchID(String email, String birthDate) {
+		List<String> userIdList = loginDao.searchID( email, birthDate );
+
+		return userIdList;
+	}
+
+	@Override
+	public List<String> searchID() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	@Override
+	public UserInfoVo searchPW(String userId, String birthDate) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	@Override
+	public void insertUser(UserInfoVo userInfoVo) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+
+
+}

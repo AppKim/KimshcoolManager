@@ -1,0 +1,87 @@
+package com.kimschool.osirase.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.kimschool.osirase.vo.OsiraseVO;
+
+@Repository
+public class OsiraseDAO {
+
+	Connection conn = null;
+
+	private Connection getConnection() throws SQLException {
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kimschool_mm", "kimschool", "kimschool1");
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver loading failed");
+		}
+		return conn;
+	}
+
+	public void create(OsiraseVO vo) {
+
+		PreparedStatement ptmt = null;
+
+		try {
+
+			conn = getConnection();
+			String sql = "INSERT INTO osirase (title,user_id,content,file,file_path,count,del_flg,main_flg) VALUES(?,?,?,?,?,?,?,?)";
+			ptmt = conn.prepareStatement(sql);
+			ptmt.setString(1, "5");
+			ptmt.setString(2, "6");
+			ptmt.setString(3, "7");
+			ptmt.setString(4, "8");
+			ptmt.setString(5, "8");
+			ptmt.setString(6, "0");
+			ptmt.setString(7, "1");
+			ptmt.setString(8, "0");
+			ptmt.executeUpdate();
+			/*if (ptmt.executeUpdate() != 0) {
+				System.out.println("insert success");
+			}*/
+
+		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+
+	}
+
+	public List<OsiraseVO> listAll() {
+
+		PreparedStatement ptmt = null;
+		ResultSet rs = null;
+		List<OsiraseVO> list = new ArrayList<OsiraseVO>();
+		try {
+
+			 conn = getConnection();
+			 String sql = "SELECT * FROM osirase";
+			 ptmt = conn.prepareStatement(sql);
+			 rs = ptmt.executeQuery();
+			 if(rs.equals(0)) {
+				 System.out.println("data nothing");
+			 }
+			 while(rs.next()) {
+				 OsiraseVO vo = new OsiraseVO();
+				 vo.setIdx(rs.getInt(1));
+
+				 list.add(vo);
+			 }
+		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+}

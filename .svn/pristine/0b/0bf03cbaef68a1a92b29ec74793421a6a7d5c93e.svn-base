@@ -1,0 +1,24 @@
+package com.kimschool.osirase.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.kimschool.osirase.dao.OsiraseDAO;
+import com.kimschool.osirase.service.OsiraseService;
+import com.kimschool.osirase.vo.OsiraseVO;
+
+@Service
+public class OsiraseServiceImpl implements OsiraseService{
+
+	@Autowired
+	OsiraseDAO osiraseDao;
+
+	@Override
+	public void create(OsiraseVO vo) throws Exception {
+		// TODO 自動生成されたメソッド・スタブ
+			osiraseDao.create(vo);
+
+	}
+
+
+}

@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>お知らせ登録</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	//お知らせ一覧画面遷移
+	$("#list").click(function(){
+		location.href="home.jsp";
+	});
+	//お知らせ一登録処理
+	$("#edit").click(function(){
+		location.href="";
+	});
+});
+
+</script>
+<style>
+	th{
+		background-color: #6699FF;
+	}
+</style>
+<body>
+<!-- 登録項目 -->
+<table border="1" width="800px">
+	<!-- タイトル -->
+	<tr height="15px">
+		<th width="200px">タイトル</th>
+		<td width="600px"><input type="text" name="title" id="title" size="83.7"></td>
+	</tr>
+	<!-- 内容 -->
+	<tr height="200px">
+		<th width="200px">内容</th>
+		<td><textarea rows="20" cols="85"></textarea></td>
+	</tr>
+	<!-- 添付 -->
+	<tr height="15px">
+		<th width="200px">添付</th>
+		<td width="600px"><button id="file" name="file">添付ファイル</button></td>
+	</tr>
+</table>
+<table width="800px">
+	<tr >
+		<td align="center">
+		<!-- 一覧ボタン -->
+		<button name="list" id="list">一覧</button>&nbsp&nbsp
+		<!-- 登録ボタン -->
+		<button name="edit" id="edit">登録</button>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

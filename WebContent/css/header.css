@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+tr {
+	background-color: #203764;
+}
+
+.table_layout {
+	color: white;
+	position: absolute;
+	width: auto;
+	height: auto;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	margin; auto;
+	overflow: auto;
+}

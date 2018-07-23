@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>お知らせ一覧</title>
+</head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
+<script type="text/javascript">
+
+//登録画面遷移
+$(document).ready(function(){
+	$("#write").click(function(){
+		location.replace("edit.jsp"); //戻るボタン非活性化のためにreplace使用
+		//location.href = "edit.jsp";
+	});
+});
+
+</script>
+<body>
+
+<!-- 新規作成ボタン -->
+<table width="800px">
+	<tr>
+		<td align="right">
+			<button id="write" name="write">新規作成</button>
+		</td>
+	</tr>
+</table>
+
+<!-- お知らせリスト -->
+<table border="1" width="800px">
+	<tr bgcolor="#6699FF">
+		<!-- 掲載番号 -->
+		<th width="50px" >NO</th>
+		<!-- タイトル -->
+		<th width="550px">タイトル</th>
+		<!-- 作成者 -->
+		<th width="50px">作成者</th>
+		<!-- 作成日 -->
+		<th width="100px">作成日</th>
+		<!-- 観覧数 -->
+		<th width="50px">観覧数</th>
+	</tr>
+	<tr>
+		<th>1</th>
+		<th><a href="view.jsp">プロジェクト開始</a></th>
+		<th>管理者</th>
+		<th>2018/06/27</th>
+		<th>5</th>
+	</tr>
+</table>
+</body>
+</html>

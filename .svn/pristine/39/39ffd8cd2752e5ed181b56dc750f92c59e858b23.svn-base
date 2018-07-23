@@ -1,0 +1,46 @@
+package com.kimschool.kimschool.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.kimschool.kimschool.dao.KSC1010Dao;
+import com.kimschool.kimschool.vo.BoardInfoVo;
+import com.kimschool.kimschool.vo.ImageVo;
+
+/**
+ *
+ *KSC1010のサービスクラス
+ *メイン画面に表示するデータ情報処理
+ * @author yun
+ *
+ */
+@Service
+public class KSC1010Service{
+
+	@Autowired
+	private KSC1010Dao ksc1010Dao;
+
+	/**
+	 *
+	 * @return 画面表示用お知らせ情報リスト
+	 */
+	public List<BoardInfoVo> getList() {
+
+		List<BoardInfoVo> boardInfoList = ksc1010Dao.getOshiraseList();
+
+		return boardInfoList;
+	}
+
+	/**
+	 *
+	 * @return 画面表示用イメージリスト
+	 */
+	public List<ImageVo> getImgList(){
+
+		List<ImageVo> imgList = ksc1010Dao.getImageList();
+
+		return imgList;
+	}
+}

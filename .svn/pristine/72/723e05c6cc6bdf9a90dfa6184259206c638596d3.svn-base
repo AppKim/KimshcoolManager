@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>PASSWORDを探す</title>
+</head>
+<body>
+
+<!-- イメージ -->
+<div>
+	<p>
+		<img src="" alt="KIM SCHOOL">
+	</p>
+</div>
+
+<!-- ラベル -->
+<div>
+	<p>
+		PASSWORDを探す<br>
+		：KIM SCHOOLに登録したIDと生年月日を入力してください。<br>
+	</p>
+</div>
+
+<!-- フォーム -->
+<div>
+	<form action="/kimschool_spring/login/searchPW" method="post">
+		ID<br>
+		<input type="text" name="userId"><br>
+		生年月日<br>
+		<input type="text" name="birthDate"><br><br>
+		<p>
+			<input type="submit" value="送信"><br>
+		</p>
+	</form>
+</div>
+
+</body>
+</html>

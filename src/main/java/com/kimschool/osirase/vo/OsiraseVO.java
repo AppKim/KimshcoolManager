@@ -1,0 +1,69 @@
+package com.kimschool.osirase.vo;
+
+
+
+import java.sql.Date;
+
+
+public class OsiraseVO {
+
+	private int idx;
+	private String title;
+	private String content;
+	private Integer count;
+	private String user_id;
+	private Date reg_date;
+	private String up_date;
+	private String file;
+	public int getIdx() {
+		return idx;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public Integer getCount() {
+		return count;
+	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public Date getReg_date() {
+		return reg_date;
+	}
+	public String getUp_date() {
+		return up_date;
+	}
+	public String getFile() {
+		return file;
+	}
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public void setReg_date(Date date) {
+		this.reg_date = date;
+	}
+	public void setUp_date(String up_date) {
+		this.up_date = up_date;
+	}
+	public void setFile(String file) {
+		this.file = file;
+	}
+
+
+
+}

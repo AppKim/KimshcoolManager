@@ -1,0 +1,16 @@
+package com.kimschool.osirase.dao;
+
+import org.springframework.stereotype.Repository;
+
+import com.kimschool.osirase.vo.OsiraseVO;
+
+@Repository
+public class OsiraseDAO {
+
+
+
+	public void create(OsiraseVO vo) {
+
+	}
+
+}

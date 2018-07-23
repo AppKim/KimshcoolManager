@@ -1,0 +1,38 @@
+package com.kimschool.osirase.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.kimschool.osirase.dao.OsiraseDAO;
+import com.kimschool.osirase.service.OsiraseService;
+import com.kimschool.osirase.vo.OsiraseVO;
+
+@Service
+public class OsiraseServiceImpl implements OsiraseService{
+
+	@Autowired
+	OsiraseDAO osiraseDao;
+
+	@Override
+	public void save(OsiraseVO vo) throws Exception {
+		// TODO 自動生成されたメソッド・スタブ
+			osiraseDao.save(vo);
+
+	}
+
+	@Override
+	public List<OsiraseVO> listAll() {
+		// TODO 自動生成されたメソッド・スタブ
+		return osiraseDao.listAll();
+	}
+
+	@Override
+	public OsiraseVO view(int idx) {
+		// TODO 自動生成されたメソッド・スタブ
+		return osiraseDao.view(idx);
+	}
+
+
+}

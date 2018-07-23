@@ -1,0 +1,10 @@
+package com.kimschool.osirase.service;
+
+public class OsiraseService {
+
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
+
+}

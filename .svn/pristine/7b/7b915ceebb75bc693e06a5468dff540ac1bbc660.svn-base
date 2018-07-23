@@ -1,0 +1,99 @@
+package com.kimschool.login.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.kimschool.login.vo.UserInfoVo;
+
+@Repository
+public class LoginDAO {
+
+	Connection conn = null;
+
+	private Connection getConnection() throws SQLException {
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/kimschool_mm", "kimschool", "kimschool1");
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver loading failed");
+		}
+		return conn;
+	}
+
+	public UserInfoVo getUser(String userId, String password) {
+
+		PreparedStatement ptmt = null;
+		ResultSet rs = null;
+		UserInfoVo vo = null;
+
+		try {
+			System.out.println("LoginDAO getUser start");
+			 conn = getConnection();
+			 String sql = "SELECT * FROM USER_INFO " +
+			 		"WHERE USER_ID = ? AND PASSWORD = ?";
+			 ptmt = conn.prepareStatement(sql);
+			 ptmt.setString(1, userId);
+			 ptmt.setString(2, password);
+			 rs = ptmt.executeQuery();
+			 if(rs.equals(0)) {
+				 System.out.println("data nothing");
+			 }
+			 while(rs.next()) {
+					int idx = rs.getInt(1);
+					String id = rs.getString(2);
+					String pw = rs.getString(3);
+					String nameKanji = rs.getString(4);
+					String nameHurigana = rs.getString(5);
+					String sex = rs.getString(6);
+					String birthDate = rs.getString(7);
+					String email = rs.getString(8);
+					String kakaoId = rs.getString(9);
+					String lineId = rs.getString(10);
+					String address = rs.getString(11);
+					String phone = rs.getString(12);
+					String delFlag = rs.getString(13);
+					String regDate = rs.getString(14);
+					String updDate = rs.getString(15);
+					String delDate = rs.getString(16);
+
+					vo = new UserInfoVo(id, pw, nameKanji, nameHurigana, sex,
+							birthDate, email, kakaoId, lineId, address, phone, delFlag,
+							regDate, updDate, delDate);
+
+					System.out.println(vo.getUserId());
+					System.out.println(vo.getPassword());
+					System.out.println("LoginDAO getUser end");
+			 }
+		} catch (SQLException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+
+		return vo;
+	}
+
+	public List<String> searchID(String email, String birthDate) {
+
+		PreparedStatement ptmt = null;
+		ResultSet rs = null;
+		List<String> userIdList = null;
+
+
+
+
+		return userIdList;
+	}
+
+
+
+
+
+
+}

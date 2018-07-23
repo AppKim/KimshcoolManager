@@ -1,0 +1,44 @@
+package com.kimschool.osirase.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.kimschool.osirase.service.OsiraseService;
+import com.kimschool.osirase.vo.OsiraseVO;
+
+@Controller
+@RequestMapping("/osirase")
+public class OsiraseController {
+
+	@Autowired
+	private OsiraseService orisaseService;
+
+	@RequestMapping(value="/create" , method=RequestMethod.POST)
+	public String create(@ModelAttribute OsiraseVO vo) throws Exception {
+
+			orisaseService.create(vo);
+
+		return null;
+
+	}
+
+	@RequestMapping(value="/list")
+	public ModelAndView list() {
+
+		ModelAndView mv = new ModelAndView();
+		List<OsiraseVO> list = orisaseService.listAll();
+		mv.setViewName("/WEB-INF/views/osirase/ksc1060.jsp");
+		mv.addObject("list",list);
+
+		return mv;
+
+	}
+
+
+}

@@ -1,0 +1,9 @@
+package com.kimschool.osirase.service;
+
+import com.kimschool.osirase.vo.OsiraseVO;
+
+public interface OsiraseService {
+
+	public void create(OsiraseVO vo) throws Exception;
+
+}

@@ -1,0 +1,110 @@
+package com.kimschool.login.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.kimschool.login.service.LoginService;
+import com.kimschool.login.vo.UserInfoVo;
+
+@Controller
+@RequestMapping("/login")
+public class LoginController {
+
+	@Autowired
+	private LoginService loginService;
+
+	@RequestMapping("/index")
+	public String showLoginForm() {
+
+		return "/WEB-INF/views/login/KSC1080.jsp";
+	}
+
+	@RequestMapping("/searchIDForm")
+	public String searchIDForm() {
+
+		return "/WEB-INF/views/login/KSC108A.jsp";
+	}
+
+	@RequestMapping("/searchPWForm")
+	public String searchPWForm() {
+
+		return "/WEB-INF/views/login/KSC108B.jsp";
+	}
+
+	@RequestMapping("/insertUserForm")
+	public String insertUserForm() {
+
+		return "/WEB-INF/views/login/KSC1090.jsp";
+	}
+
+	@RequestMapping(value="/getUser", method=RequestMethod.POST)
+	public String getUser(
+			Model model,
+			@RequestParam String userId,
+			@RequestParam String password ) {
+
+		UserInfoVo userInfoVo = loginService.getUser(userId, password);
+		model.addAttribute("userInfoVo", userInfoVo);
+
+		return "redirect:/sample/index";
+	}
+
+	@RequestMapping(value="/searchID", method=RequestMethod.GET)
+	public String searchID(
+			Model model,
+			@RequestParam String email,
+			@RequestParam String birthDate ) {
+
+		System.out.println("email: " + email);
+		System.out.println("birthDate: " + birthDate);
+//		List<String> userIdList = loginService.searchID(email, birthDate);
+//		model.addAttribute("userIdList", userIdList);
+
+		return "redirect:/sample/index";
+	}
+
+	@RequestMapping(value="/searchPW", method=RequestMethod.POST)
+	public String searchPW(
+			Model model,
+			@RequestParam String userId,
+			@RequestParam String birthDate ) {
+
+		UserInfoVo userInfoVo = loginService.searchPW(userId, birthDate);
+		model.addAttribute("userInfoVo", userInfoVo);
+
+		return "redirect:/sample/index";
+	}
+
+	@RequestMapping(value="/insertUser", method=RequestMethod.POST)
+	public String insertUser(
+			@RequestParam String userId,
+			@RequestParam String password,
+			@RequestParam String nameKanji,
+			@RequestParam String nameHurigana,
+			@RequestParam String sex,
+			@RequestParam String birthDate,
+			@RequestParam String email,
+			@RequestParam String kakaoId,
+			@RequestParam String lineId,
+			@RequestParam String address,
+			@RequestParam String phone,
+			@RequestParam String delFlag,
+			@RequestParam String regDate,
+			@RequestParam String updDate,
+			@RequestParam String delDate ) {
+
+		UserInfoVo userInfoVo = new UserInfoVo(
+					userId, password, nameKanji,
+					nameHurigana, sex, birthDate, email,
+					kakaoId, lineId, address, phone,
+					delFlag, regDate, updDate, delDate );
+
+		loginService.insertUser(userInfoVo);
+
+		return "redirect:/sample/index";
+	}
+}
