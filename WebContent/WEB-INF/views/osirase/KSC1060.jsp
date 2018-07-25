@@ -57,5 +57,9 @@ $(document).ready(function(){
 	</c:forEach>
 
 </table>
+
+<div id="pagination">
+	<a href="#">前ページへ</a><a href="#">1</a><a href="#">次ページへ</a>
+</div>
 </body>
 </html>
