@@ -5,30 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-.table_layout {
-	width: 50%;
-	margin: auto;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-}
-</style>
 </head>
 <body>
-		<div class="table_layout">
-			<hr style="width:1000px; height: 2px; border: 0; background: black;">
-			<table width="1000px" height="100px" cellspacing="0" border="1">
-			<colgroup>
-				<col width="10%" />
-				<col width="90%" />
-			</colgroup>
-				<tr>
-					<td><img src="img/mini.jpg" height="80px" width="100px"></td>
-					<td>〒000-0000<br>東京都中野区XXXXX0-00-00<br>TEL：00-0000-0000<br>E-mail：xxxxx@kimschool.online</td>
-				</tr>
-			</table>
-		</div>
+	<div class="footer_table_layout" style="margin:20px 0px 0px 0px">
+		<hr style="width:100%; height: 2px; border: 0; background: black;">
+		<table width="100%" height="100px" cellspacing="0" border="1">
+		<colgroup>
+			<col width="10%" />
+			<col width="90%" />
+		</colgroup>
+			<tr>
+				<td><img src="/kimschool_spring/img/mini.jpg" height="80px" width="100px"></td>
+				<td>〒000-0000<br>東京都中野区XXXXX0-00-00<br>TEL：00-0000-0000<br>E-mail：xxxxx@kimschool.online</td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>

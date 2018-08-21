@@ -59,10 +59,19 @@ public class LoginController {
 	public String getUser(
 			Model model,
 			@RequestParam String userId,
-			@RequestParam String password ) {
+			@RequestParam String password,
+			@RequestParam String isSaveId ) {
 
 		UserInfoVo userInfoVo = loginService.getUser(userId, password);
+		boolean checkboxFlg = false;
+
 		model.addAttribute("userInfoVo", userInfoVo);
+		model.addAttribute("userId", userId);
+
+		if(!isSaveId.equals("off")) {
+			checkboxFlg = true;
+		}
+		model.addAttribute("checkboxFlg", checkboxFlg);
 
 		return "WEB-INF/views/login/KSC1080";
 	}
@@ -107,8 +116,6 @@ public class LoginController {
 		model.addAttribute("isSearchPWFormFlg", isSearchPWFormFlg);
 		model.addAttribute("updatePWFlg", updatePWFlg);
 
-		System.out.println("/updatePW" + isSearchPWFormFlg + " " + updatePWFlg);
-
 		return "WEB-INF/views/login/KSC108B";
 	}
 
@@ -128,28 +135,33 @@ public class LoginController {
 			@RequestParam String email,
 			@RequestParam String kakaoId,
 			@RequestParam String lineId,
-			@RequestParam String address,
-			@RequestParam String phone ) {
+			@RequestParam String address) {
 
 		String nameKanji = lastname_kanji + firstname_kanji;
 		String nameHurigana = lastname_hurigana + firstname_hurigana;
-		String birthDate = year + month + day;
-
-		if(sex.equals("0")) {
-			sex = "M";
-		}else if(sex.equals("1")) {
-			sex = "F";
-		}
-
-		boolean insertUserFlg = false;
+		String birthDate = new String();
+		birthDate += year;
+		birthDate += String.format("%02d", Integer.parseInt(month));
+		birthDate += String.format("%02d", Integer.parseInt(day));
+		boolean isUserIDFlg = false;
+		boolean isInsertUserFormFlg = false;
 
 		UserInfoVo userInfoVo = new UserInfoVo(
 					userId, password, nameKanji,
 					nameHurigana, sex, birthDate, email,
-					kakaoId, lineId, address, phone);
+					kakaoId, lineId, address);
 
-		insertUserFlg = loginService.insertUser(userInfoVo);
-		model.addAttribute("insertUserFlg", insertUserFlg);
+		isUserIDFlg = loginService.getUserID(userInfoVo.getUserId());
+
+		if(isUserIDFlg) {
+			isInsertUserFormFlg = true;
+			model.addAttribute("isInsertUserFormFlg", isInsertUserFormFlg);
+			model.addAttribute("isUserIDFlg", isUserIDFlg);
+
+			return "WEB-INF/views/login/KSC1090";
+		}
+
+		loginService.insertUser(userInfoVo);
 
 		return "WEB-INF/views/login/KSC1080";
 	}

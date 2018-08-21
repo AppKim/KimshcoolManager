@@ -61,7 +61,7 @@ public class LoginDAO {
 					String phone = rs.getString(12);
 
 					vo = new UserInfoVo(id, pw, nameKanji, nameHurigana, sex,
-							birthDate, email, kakaoId, lineId, address, phone);
+							birthDate, email, kakaoId, lineId, address);
 			 }
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
@@ -202,7 +202,7 @@ public class LoginDAO {
 			 		+ "UPD_DATE, "
 			 		+ "DEL_DATE) "
 			 		+ "VALUES( "
-			 		+ "?, ?, ?, ?, ?, CAST(? AS DATE), ?, ?, ?, ?, ?, "
+			 		+ "?, ?, ?, ?, ?, CAST(? AS DATE), ?, ?, ?, ?, 'XXX-XXXX-XXXX', "
 			 		+ "'N', CAST(NOW() AS DATE), CAST(NOW() AS DATE), CAST(NOW() AS DATE))";
 
 			 ptmt = conn.prepareStatement(sql);
@@ -216,7 +216,6 @@ public class LoginDAO {
 			 ptmt.setString(8, userInfoVo.getKakaoId());
 			 ptmt.setString(9, userInfoVo.getLineId());
 			 ptmt.setString(10, userInfoVo.getAddress());
-			 ptmt.setString(11, userInfoVo.getPhone());
 
 			 int ret = ptmt.executeUpdate();
 

@@ -20,12 +20,12 @@
 		$("#save").click(function() {
 
 			if($("#title").val().trim() == ""){
-				alert("タイトルを入力してください。");
+				alert("タイトルを入力してください");
 				$("#title").focus();
 				return false;
 			}
 			if($("#content").val().trim() == ""){
-				alert("内容を入力してください。");
+				alert("内容を入力してください");
 				$("#content").focus();
 				return false;
 			}
@@ -69,6 +69,7 @@ th {
 </style>
 <body>
 	<!-- 登録項目 -->
+	
 		<table border="1" width="800px">
 			<!-- タイトル -->
 			<tr height="15px">

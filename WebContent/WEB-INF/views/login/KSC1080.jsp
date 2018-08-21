@@ -63,59 +63,65 @@
 	</script>
 </head>
 <body>
+	<div id="header">
+		<%@ include file="/header.jsp" %>
+	</div>
+	<div id="container" style="height:300px" >
+		<!-- イメージ -->
+		<div>
+			<p>
+				<img src="" alt="KIM SCHOOL">
+			</p>
+		</div>
 
-<!-- イメージ -->
-<div>
-	<p>
-		<img src="" alt="KIM SCHOOL">
-	</p>
-</div>
+		<!-- フォーム -->
+		<div>
+			<form name="getUser" action="/kimschool_spring/login/getUser" method="post"
+				onsubmit="return formCheck()">
+				ID<br>
+				<input type="text" name="userId" id="userId">
+				<div id="loginResult"></div><br>
+				PASSWORD<br>
+				<input type="password" name="password" id="password"><br><br>
+				<input type="checkbox" name="saveId" value="on">IDを保存する
+				<input type="hidden" name="isSaveId">
+				<p>
+					<input type="submit" value="ログイン"><br>
+				</p>
+			</form>
+		</div>
 
-<!-- フォーム -->
-<div>
-	<form name="getUser" action="/kimschool_spring/login/getUser" method="post"
-		onsubmit="return formCheck()">
-		ID<br>
-		<input type="text" name="userId" id="userId">
-		<div id="loginResult"></div><br>
-		PASSWORD<br>
-		<input type="password" name="password" id="password"><br><br>
-		<input type="checkbox" name="saveId" value="on">IDを保存する
-		<input type="hidden" name="isSaveId">
-		<p>
-			<input type="submit" value="ログイン"><br>
-		</p>
-	</form>
-</div>
+		<!-- リンク -->
+		<div>
+			<p>
+				<a href="/kimschool_spring/login/searchIDForm">IDを探す</a>
+				<a href="/kimschool_spring/login/searchPWForm">PASSWORDを探す</a>
+				<a href="/kimschool_spring/login/insertUserForm">会員登録をする</a>
+			</p>
+		</div>
 
-<!-- リンク -->
-<div>
-	<p>
-		<a href="/kimschool_spring/login/searchIDForm">IDを探す</a>
-		<a href="/kimschool_spring/login/searchPWForm">PASSWORDを探す</a>
-		<a href="/kimschool_spring/login/insertUserForm">会員登録をする</a>
-	</p>
-</div>
+		<c:if test="${userId != null && userInfoVo == null}">
+			<script type="text/javascript">
+				getUser.userId.value = "${userId}";
+			</script>
+		</c:if>
 
-<c:if test="${userId != null && userInfoVo == null}">
-	<script type="text/javascript">
-		getUser.userId.value = "${userId}";
-	</script>
-</c:if>
-
-<c:choose>
-	<c:when test="${checkboxFlg == true}">
-		<script type="text/javascript">
-			getUser.userId.value = "${userId}";
-			getUser.saveId.checked = true;
-		</script>
-	</c:when>
-	<c:otherwise>
-		<script type="text/javascript">
-			getUser.saveId.checked = false;
-		</script>
-	</c:otherwise>
-</c:choose>
-
+		<c:choose>
+			<c:when test="${checkboxFlg == true}">
+				<script type="text/javascript">
+					getUser.userId.value = "${userId}";
+					getUser.saveId.checked = true;
+				</script>
+			</c:when>
+			<c:otherwise>
+				<script type="text/javascript">
+					getUser.saveId.checked = false;
+				</script>
+			</c:otherwise>
+		</c:choose>
+	</div>
+	<div id="footer">
+		<%@ include file="/footer.jsp" %>
+	</div>
 </body>
 </html>

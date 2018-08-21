@@ -1,32 +1,29 @@
 @charset "EUC-KR";
 
 * {box-sizing: border-box;}
-.mySlides {display: none;}
-/* img {vertical-align: middle;} */
+.mySlides {
+	display: none;
+	width: 100%;
+	height: 100%;
+}
+
+.margin-back{
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 50px;
+}
 
 .slideshow-container {
   max-width: 1920px;
-  height: 300px;
+  max-height: 300px;
   position: relative;
-  margin: auto;
 }
-
-
-/* .dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-} */
 
 .fade {
   -webkit-animation-name: fade;
-  -webkit-animation-duration: 0.5s;
+  -webkit-animation-duration: 3.0s;
   animation-name: fade;
-  animation-duration: 0.5s;
+  animation-duration: 3.0s;
 }
 
 @-webkit-keyframes fade {
@@ -58,4 +55,29 @@
 	text-align:left;
 	color:white;
 	background-color: black;/*나중에 색 변경*/
+}
+
+.facebookArea, .instagramArea, .youtubeArea{
+	display: inline-block;
+}
+
+.imgFaceBook, .imgInstagram, .imgYoutube{
+	width: 150px;
+	height: 150px;
+	background-color:rgba(0,0,0,0);
+	background-size:100% 100%;
+	background-repeat: no-repeat;
+	border-color: rgba(0,0,0,0);
+}
+
+.imgFaceBook{
+	background-image: url("../img/facebook.png");
+}
+
+.imgInstagram{
+	background-image: url("../img/insta.png");
+}
+
+.imgYoutube{
+	background-image: url("../img/youtube.png");
 }

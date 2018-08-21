@@ -19,5 +19,4 @@ http://www.springframework.org/schema/task/spring-task.xsd">
 	<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 	<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
 </context:component-scan>
-
 </beans>
