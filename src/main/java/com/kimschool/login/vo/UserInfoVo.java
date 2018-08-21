@@ -23,7 +23,7 @@ public class UserInfoVo {
 	public UserInfoVo(String userId, String password,
 			String nameKanji, String nameHurigana, String sex,
 			String birthDate, String email, String kakaoId, String lineId,
-			String address, String phone) {
+			String address) {
 		this.userId = userId;
 		this.password = password;
 		this.nameKanji = nameKanji;
@@ -34,7 +34,6 @@ public class UserInfoVo {
 		this.kakaoId = kakaoId;
 		this.lineId = lineId;
 		this.address = address;
-		this.phone = phone;
 	}
 
 	public int getIdx() {

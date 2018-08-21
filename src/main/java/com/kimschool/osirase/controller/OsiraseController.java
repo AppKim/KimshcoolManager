@@ -46,7 +46,7 @@ public class OsiraseController {
 	public @ResponseBody Object save(@ModelAttribute OsiraseVO vo) {
 
 		HashMap<String, Object> retVal = new HashMap<>();
-
+		
 		logger.info("お知らせ登録");
 		try {
 			//登録処理実行
@@ -73,6 +73,7 @@ public class OsiraseController {
 		List<OsiraseVO> list = orisaseService.listAll();
 		mv.setViewName("WEB-INF/views/osirase/KSC1060");
 		mv.addObject("list", list);
+		
 
 		return mv;
 
